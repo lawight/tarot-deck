@@ -3,66 +3,130 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>牌知道 · 22 张大阿卡纳</title>
+<title>牌知道 · 22 张大阿卡纳（v2）</title>
 <style>
-  :root { --gold:#c9a227; --ink:#2b2620; --paper:#f5efe2; --line:#d8cbb0; }
-  * { box-sizing:border-box; }
-  body { margin:0; background:#1c1a17; color:#e8e2d5;
-         font-family:"Songti SC","Noto Serif SC",serif; line-height:1.7; }
-  header { max-width:1200px; margin:0 auto; padding:56px 24px 8px; }
-  h1 { font-size:30px; margin:0 0 8px; letter-spacing:.14em; color:var(--gold); font-weight:500; }
-  .sub { color:#9c9284; font-size:14px; margin:0 0 6px; }
-  .intro { max-width:760px; margin:26px 0 0; color:#c9c1b1; font-size:15px; }
-  .intro strong { color:var(--gold); }
-  .stat { margin-top:18px; font-size:13px; color:#8b8272; }
-  .deck { max-width:1200px; margin:0 auto; padding:32px 24px 80px;
-           display:grid; grid-template-columns:repeat(auto-fill,minmax(238px,1fr)); gap:34px 26px; }
-  .card { display:flex; flex-direction:column; }
-  .frame { position:relative; background:var(--paper); border-radius:6px; overflow:hidden;
-            box-shadow:0 12px 34px rgba(0,0,0,.55); aspect-ratio:768/1344; }
-  .frame img { width:100%; height:100%; object-fit:cover; display:block; }
-  .pending { width:100%; height:100%; display:flex; flex-direction:column; align-items:center;
-              justify-content:center; color:#a99a7c; font-size:14px;
-              background:repeating-linear-gradient(45deg,#efe7d6,#efe7d6 12px,#e7ddc8 12px,#e7ddc8 24px); }
-  .pending span { font-size:11px; letter-spacing:.2em; }
-  .plate { position:absolute; top:10px; left:50%; transform:translateX(-50%);
-            background:rgba(43,38,32,.82); color:var(--gold);
-            border:1px solid var(--gold); border-radius:999px;
-            min-width:44px; padding:3px 12px; text-align:center;
-            font-size:13px; letter-spacing:.16em; }
-  .caption { position:absolute; left:0; right:0; bottom:0; padding:34px 14px 14px;
-              background:linear-gradient(transparent,rgba(28,26,23,.92));
-              text-align:center; }
-  .caption h3 { margin:0; font-size:19px; letter-spacing:.1em; color:#f3ead6; font-weight:500; }
-  .caption .en { margin:2px 0 0; font-size:11px; letter-spacing:.18em;
-                  color:#b9a97f; text-transform:uppercase; }
-  .meta { padding:12px 4px 0; }
-  .who { margin:0; font-size:12.5px; color:#9c9284; }
-  .quote { margin:6px 0 0; font-size:13.5px; color:#cfc6b4; }
-  footer { max-width:1200px; margin:0 auto; padding:0 24px 70px; color:#7d7566; font-size:13px; }
-  footer .line { border-top:1px solid #332e27; padding-top:20px; }
+ :root { --gold:#c9a227; --gold2:#e0c76a; --paper:#f6ecd2; --ink:#2b2620; --bg:#1c1a17; }
+ * { box-sizing:border-box; }
+ body { margin:0; background:var(--bg); color:#e8e2d5; line-height:1.7;
+        font-family:"Songti SC","Noto Serif SC",Georgia,serif; }
+ header { max-width:1200px; margin:0 auto; padding:56px 24px 8px; }
+ h1 { font-size:38px; letter-spacing:.18em; color:var(--gold); margin:0 0 8px; }
+ .sub { color:#9c9284; font-size:13px; letter-spacing:.1em; margin:0 0 4px; }
+ .intro { color:#cfc6b4; font-size:15px; max-width:640px; }
+ .stat { color:#7d7566; font-size:13px; }
+ main { max-width:1200px; margin:0 auto; padding:18px 24px 70px;
+        display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:30px 22px; }
+ .card { display:flex; flex-direction:column; }
+ /* ── 牌框：22 张共用这一套 ── */
+ .frame { position:relative; padding:16px 16px 58px; border-radius:14px;
+          background:
+            radial-gradient(120% 80% at 50% 0%, #fbf5e4 0%, #f2e6c8 55%, #e8d9b4 100%);
+          border:2px solid var(--gold);
+          box-shadow:0 0 0 1px #8a7420 inset, 0 10px 30px rgba(0,0,0,.45); }
+ .frame::after { content:""; position:absolute; inset:7px; border:1px solid var(--gold2);
+                 border-radius:9px; pointer-events:none; }
+  .corner { position:absolute; width:44px; height:44px; opacity:.9; pointer-events:none; }
+ .corner.tl { top:4px; left:4px; opacity:.75; }
+ .corner.tr { top:4px; right:4px; transform:scaleX(-1); opacity:.75; }
+ .corner.bl { bottom:50px; left:6px; transform:scaleY(-1); }
+ .corner.br { bottom:50px; right:6px; transform:scale(-1,-1); }
+ .plate { position:absolute; top:-14px; left:50%; transform:translateX(-50%);
+          min-width:46px; height:46px; border-radius:50%;
+          background:var(--paper); border:2px solid var(--gold);
+          display:flex; align-items:center; justify-content:center;
+          font-size:15px; letter-spacing:.08em; color:#6b5416;
+          box-shadow:0 3px 10px rgba(0,0,0,.35); z-index:3; }
+ .art { position:relative; border-radius:120px 120px 8px 8px; overflow:hidden;
+        border:1px solid #8a7420; background:#e8d9b4; aspect-ratio:2/3; }
+ .art img { width:100%; height:100%; object-fit:cover; display:block; }
+ .pending { display:flex; align-items:center; justify-content:center; height:100%;
+            color:#8a7a55; font-size:13px; text-align:center; }
+ .finial { position:absolute; left:50%; transform:translateX(-50%); bottom:56px; width:56px; height:19px; opacity:.95; }
+ .nameband { position:absolute; left:16px; right:16px; bottom:10px; height:52px; }
+ .band { position:absolute; inset:0; width:100%; height:100%; }
+ .nametext { position:absolute; inset:0; display:flex; flex-direction:column;
+             align-items:center; justify-content:center; padding-bottom:4px; }
+ .nametext h3 { margin:0; font-size:19px; letter-spacing:.12em; color:#4a3a10; font-weight:600; }
+ .nametext .en { margin:1px 0 0; font-size:10px; letter-spacing:.2em; color:#8a7420;
+                 text-transform:uppercase; }
+ .meta { padding:10px 4px 0; }
+ .who { margin:0; font-size:12.5px; color:#9c9284; }
+ .quote { margin:6px 0 0; font-size:13.5px; color:#cfc6b4; }
+ footer { max-width:1200px; margin:0 auto; padding:0 24px 80px; color:#7d7566; font-size:13px; }
+ footer .line { border-top:1px solid #332e27; padding-top:20px; }
 </style>
 </head>
 <body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- 新艺术拱形：双线拱 + 肩部卷草 + 顶部垂花 -->
+    <symbol id="arch" viewBox="0 0 100 140" preserveAspectRatio="none">
+      <path d="M4,140 L4,44 C4,20 26,6 50,6 C74,6 96,20 96,44 L96,140"
+            fill="none" stroke="#c9a227" stroke-width="1.6" vector-effect="non-scaling-stroke"/>
+      <path d="M9,140 L9,44 C9,23 28,11 50,11 C72,11 91,23 91,44 L91,140"
+            fill="none" stroke="#e6d194" stroke-width="0.7" vector-effect="non-scaling-stroke"/>
+      <path d="M4,44 C10,34 20,28 28,26 C22,34 20,42 21,50 C14,48 8,47 4,47 Z"
+            fill="#f7edd2" stroke="#c9a227" stroke-width="0.9" vector-effect="non-scaling-stroke"/>
+      <path d="M96,44 C90,34 80,28 72,26 C78,34 80,42 79,50 C86,48 92,47 96,47 Z"
+            fill="#f7edd2" stroke="#c9a227" stroke-width="0.9" vector-effect="non-scaling-stroke"/>
+      <path d="M50,6 C50,6 43,15 43,24 C43,33 50,38 50,38 C50,38 57,33 57,24 C57,15 50,6 50,6 Z"
+            fill="#f7edd2" stroke="#c9a227" stroke-width="1" vector-effect="non-scaling-stroke"/>
+      <path d="M50,38 C50,44 46,48 42,52" fill="none" stroke="#c9a227" stroke-width="0.8" vector-effect="non-scaling-stroke"/>
+      <path d="M50,38 C50,44 54,48 58,52" fill="none" stroke="#c9a227" stroke-width="0.8" vector-effect="non-scaling-stroke"/>
+      <circle cx="42" cy="53" r="1.6" fill="#c9a227"/>
+      <circle cx="58" cy="53" r="1.6" fill="#c9a227"/>
+      <path d="M22,60 C18,68 19,78 24,84" fill="none" stroke="#d9c179" stroke-width="0.6" vector-effect="non-scaling-stroke"/>
+      <path d="M78,60 C82,68 81,78 76,84" fill="none" stroke="#d9c179" stroke-width="0.6" vector-effect="non-scaling-stroke"/>
+    </symbol>
+    <!-- 角花（更大更清晰） -->
+    <symbol id="corner" viewBox="0 0 48 48">
+      <path d="M3,3 C18,5 30,13 37,28 C39,33 39,38 37,43" fill="none" stroke="#c9a227" stroke-width="1.5"/>
+      <path d="M3,3 C10,10 13,18 12,26" fill="none" stroke="#d9c179" stroke-width="0.8"/>
+      <circle cx="10" cy="10" r="4" fill="#f7edd2" stroke="#c9a227" stroke-width="0.9"/>
+      <circle cx="10" cy="10" r="1.5" fill="#c9a227"/>
+      <circle cx="25" cy="11" r="2.2" fill="#c9a227"/>
+      <circle cx="12" cy="26" r="2.2" fill="#c9a227"/>
+      <path d="M30,17 C34,20 36,24 36,29" fill="none" stroke="#c9a227" stroke-width="0.8"/>
+    </symbol>
+    <!-- 名牌（绶带，带折角） -->
+    <symbol id="plate" viewBox="0 0 200 40" preserveAspectRatio="none">
+      <path d="M14,5 L186,5 C194,5 197,10 195,16 L186,33 C184,38 179,39 174,37 L100,25 L26,37 C21,39 16,38 14,33 L5,16 C3,10 6,5 14,5 Z"
+            fill="#f8f0da" stroke="#c9a227" stroke-width="1.4"/>
+      <path d="M14,9 L186,9" stroke="#e6d194" stroke-width="0.6"/>
+      <path d="M16,32 L184,32" stroke="#e6d194" stroke-width="0.6"/>
+    </symbol>
+    <!-- 名牌下方的收尾小花 -->
+    <symbol id="finial" viewBox="0 0 60 20">
+      <path d="M30,2 C24,6 18,10 8,12" fill="none" stroke="#c9a227" stroke-width="1"/>
+      <path d="M30,2 C36,6 42,10 52,12" fill="none" stroke="#c9a227" stroke-width="1"/>
+      <circle cx="30" cy="6" r="3" fill="#f7edd2" stroke="#c9a227" stroke-width="0.9"/>
+      <circle cx="8" cy="12" r="1.8" fill="#c9a227"/>
+      <circle cx="52" cy="12" r="1.8" fill="#c9a227"/>
+    </symbol>
+  </defs>
+</svg>
 <header>
   <h1>牌 知 道</h1>
   <p class="sub">22 张大阿卡纳 · 女子群像 · 原创</p>
   <p class="sub"><a href="story.html" style="color:#c9a227">阅读故事 →</a></p>
-  <p class="intro">
-    <strong>这副牌不画神。它画的是牌见过的人。</strong><br>
-    一百年来，凡是被这副牌「记住」的人，都活在牌里。<br>
-    翻开一张，就是让一个人重新活一次。
-  </p>
-  <p class="stat">牌序 0 – XXI ｜ 角色年龄 18–38 ｜ 已出图 22/22</p>
+  <p class="intro"><strong>这副牌不画神。它画的是牌见过的人。</strong><br>
+     一百年来，凡是被这副牌「记住」的人，都活在牌里。<br>
+     翻开一张，就是让一个人重新活一次。</p>
+  <p class="stat">牌序 0 – XXI ｜ 角色年龄 18–38 ｜ 已出图 22/22 ｜ 牌框由矢量模板合成（无 AI 文字）</p>
 </header>
-<main class="deck">
+<main>
 <article class="card">
   <div class="frame">
-    <img src="cards/v1_00_愚者.jpg" alt="愚者" loading="lazy">
+    <svg class="corner tl" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner tr" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner bl" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner br" viewBox="0 0 48 48"><use href="#corner"/></svg>
     <div class="plate"><span class="num">0</span></div>
-    <div class="caption">
-      <h3>愚者</h3>
-      <p class="en">The Fool</p>
+    <div class="art"><img src="cards_v2/v2_00_愚者.jpg" alt="愚者" loading="lazy"></div>
+    <svg class="finial" viewBox="0 0 60 20"><use href="#finial"/></svg>
+    <div class="nameband"><svg class="band" viewBox="0 0 200 40" preserveAspectRatio="none"><use href="#plate"/></svg>
+      <div class="nametext"><h3>愚者</h3><p class="en">The Fool</p></div>
     </div>
   </div>
   <div class="meta">
@@ -72,11 +136,15 @@
 </article>
 <article class="card">
   <div class="frame">
-    <img src="cards/v1_01_魔术师.jpg" alt="魔术师" loading="lazy">
+    <svg class="corner tl" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner tr" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner bl" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner br" viewBox="0 0 48 48"><use href="#corner"/></svg>
     <div class="plate"><span class="num">I</span></div>
-    <div class="caption">
-      <h3>魔术师</h3>
-      <p class="en">The Magician</p>
+    <div class="art"><img src="cards_v2/v2_01_魔术师.jpg" alt="魔术师" loading="lazy"></div>
+    <svg class="finial" viewBox="0 0 60 20"><use href="#finial"/></svg>
+    <div class="nameband"><svg class="band" viewBox="0 0 200 40" preserveAspectRatio="none"><use href="#plate"/></svg>
+      <div class="nametext"><h3>魔术师</h3><p class="en">The Magician</p></div>
     </div>
   </div>
   <div class="meta">
@@ -86,11 +154,15 @@
 </article>
 <article class="card">
   <div class="frame">
-    <img src="cards/v1_02_女祭司.jpg" alt="女祭司" loading="lazy">
+    <svg class="corner tl" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner tr" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner bl" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner br" viewBox="0 0 48 48"><use href="#corner"/></svg>
     <div class="plate"><span class="num">II</span></div>
-    <div class="caption">
-      <h3>女祭司</h3>
-      <p class="en">The High Priestess</p>
+    <div class="art"><img src="cards_v2/v2_02_女祭司.jpg" alt="女祭司" loading="lazy"></div>
+    <svg class="finial" viewBox="0 0 60 20"><use href="#finial"/></svg>
+    <div class="nameband"><svg class="band" viewBox="0 0 200 40" preserveAspectRatio="none"><use href="#plate"/></svg>
+      <div class="nametext"><h3>女祭司</h3><p class="en">The High Priestess</p></div>
     </div>
   </div>
   <div class="meta">
@@ -100,11 +172,15 @@
 </article>
 <article class="card">
   <div class="frame">
-    <img src="cards/v1_03_女皇.jpg" alt="女皇" loading="lazy">
+    <svg class="corner tl" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner tr" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner bl" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner br" viewBox="0 0 48 48"><use href="#corner"/></svg>
     <div class="plate"><span class="num">III</span></div>
-    <div class="caption">
-      <h3>女皇</h3>
-      <p class="en">The Empress</p>
+    <div class="art"><img src="cards_v2/v2_03_女皇.jpg" alt="女皇" loading="lazy"></div>
+    <svg class="finial" viewBox="0 0 60 20"><use href="#finial"/></svg>
+    <div class="nameband"><svg class="band" viewBox="0 0 200 40" preserveAspectRatio="none"><use href="#plate"/></svg>
+      <div class="nametext"><h3>女皇</h3><p class="en">The Empress</p></div>
     </div>
   </div>
   <div class="meta">
@@ -114,11 +190,15 @@
 </article>
 <article class="card">
   <div class="frame">
-    <img src="cards/v1_04_皇帝.jpg" alt="皇帝" loading="lazy">
+    <svg class="corner tl" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner tr" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner bl" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner br" viewBox="0 0 48 48"><use href="#corner"/></svg>
     <div class="plate"><span class="num">IV</span></div>
-    <div class="caption">
-      <h3>皇帝</h3>
-      <p class="en">The Emperor</p>
+    <div class="art"><img src="cards_v2/v2_04_皇帝.jpg" alt="皇帝" loading="lazy"></div>
+    <svg class="finial" viewBox="0 0 60 20"><use href="#finial"/></svg>
+    <div class="nameband"><svg class="band" viewBox="0 0 200 40" preserveAspectRatio="none"><use href="#plate"/></svg>
+      <div class="nametext"><h3>皇帝</h3><p class="en">The Emperor</p></div>
     </div>
   </div>
   <div class="meta">
@@ -128,11 +208,15 @@
 </article>
 <article class="card">
   <div class="frame">
-    <img src="cards/v1_05_教皇.jpg" alt="教皇" loading="lazy">
+    <svg class="corner tl" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner tr" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner bl" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner br" viewBox="0 0 48 48"><use href="#corner"/></svg>
     <div class="plate"><span class="num">V</span></div>
-    <div class="caption">
-      <h3>教皇</h3>
-      <p class="en">The Hierophant</p>
+    <div class="art"><img src="cards_v2/v2_05_教皇.jpg" alt="教皇" loading="lazy"></div>
+    <svg class="finial" viewBox="0 0 60 20"><use href="#finial"/></svg>
+    <div class="nameband"><svg class="band" viewBox="0 0 200 40" preserveAspectRatio="none"><use href="#plate"/></svg>
+      <div class="nametext"><h3>教皇</h3><p class="en">The Hierophant</p></div>
     </div>
   </div>
   <div class="meta">
@@ -142,11 +226,15 @@
 </article>
 <article class="card">
   <div class="frame">
-    <img src="cards/v1_06_恋人.jpg" alt="恋人" loading="lazy">
+    <svg class="corner tl" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner tr" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner bl" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner br" viewBox="0 0 48 48"><use href="#corner"/></svg>
     <div class="plate"><span class="num">VI</span></div>
-    <div class="caption">
-      <h3>恋人</h3>
-      <p class="en">The Lovers</p>
+    <div class="art"><img src="cards_v2/v2_06_恋人.jpg" alt="恋人" loading="lazy"></div>
+    <svg class="finial" viewBox="0 0 60 20"><use href="#finial"/></svg>
+    <div class="nameband"><svg class="band" viewBox="0 0 200 40" preserveAspectRatio="none"><use href="#plate"/></svg>
+      <div class="nametext"><h3>恋人</h3><p class="en">The Lovers</p></div>
     </div>
   </div>
   <div class="meta">
@@ -156,11 +244,15 @@
 </article>
 <article class="card">
   <div class="frame">
-    <img src="cards/v1_07_战车.jpg" alt="战车" loading="lazy">
+    <svg class="corner tl" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner tr" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner bl" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner br" viewBox="0 0 48 48"><use href="#corner"/></svg>
     <div class="plate"><span class="num">VII</span></div>
-    <div class="caption">
-      <h3>战车</h3>
-      <p class="en">The Chariot</p>
+    <div class="art"><img src="cards_v2/v2_07_战车.jpg" alt="战车" loading="lazy"></div>
+    <svg class="finial" viewBox="0 0 60 20"><use href="#finial"/></svg>
+    <div class="nameband"><svg class="band" viewBox="0 0 200 40" preserveAspectRatio="none"><use href="#plate"/></svg>
+      <div class="nametext"><h3>战车</h3><p class="en">The Chariot</p></div>
     </div>
   </div>
   <div class="meta">
@@ -170,11 +262,15 @@
 </article>
 <article class="card">
   <div class="frame">
-    <img src="cards/v1_08_力量.jpg" alt="力量" loading="lazy">
+    <svg class="corner tl" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner tr" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner bl" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner br" viewBox="0 0 48 48"><use href="#corner"/></svg>
     <div class="plate"><span class="num">VIII</span></div>
-    <div class="caption">
-      <h3>力量</h3>
-      <p class="en">Strength</p>
+    <div class="art"><img src="cards_v2/v2_08_力量.jpg" alt="力量" loading="lazy"></div>
+    <svg class="finial" viewBox="0 0 60 20"><use href="#finial"/></svg>
+    <div class="nameband"><svg class="band" viewBox="0 0 200 40" preserveAspectRatio="none"><use href="#plate"/></svg>
+      <div class="nametext"><h3>力量</h3><p class="en">Strength</p></div>
     </div>
   </div>
   <div class="meta">
@@ -184,11 +280,15 @@
 </article>
 <article class="card">
   <div class="frame">
-    <img src="cards/v1_09_隐者.jpg" alt="隐者" loading="lazy">
+    <svg class="corner tl" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner tr" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner bl" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner br" viewBox="0 0 48 48"><use href="#corner"/></svg>
     <div class="plate"><span class="num">IX</span></div>
-    <div class="caption">
-      <h3>隐者</h3>
-      <p class="en">The Hermit</p>
+    <div class="art"><img src="cards_v2/v2_09_隐者.jpg" alt="隐者" loading="lazy"></div>
+    <svg class="finial" viewBox="0 0 60 20"><use href="#finial"/></svg>
+    <div class="nameband"><svg class="band" viewBox="0 0 200 40" preserveAspectRatio="none"><use href="#plate"/></svg>
+      <div class="nametext"><h3>隐者</h3><p class="en">The Hermit</p></div>
     </div>
   </div>
   <div class="meta">
@@ -198,11 +298,15 @@
 </article>
 <article class="card">
   <div class="frame">
-    <img src="cards/v1_10_命运之轮.jpg" alt="命运之轮" loading="lazy">
+    <svg class="corner tl" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner tr" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner bl" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner br" viewBox="0 0 48 48"><use href="#corner"/></svg>
     <div class="plate"><span class="num">X</span></div>
-    <div class="caption">
-      <h3>命运之轮</h3>
-      <p class="en">Wheel of Fortune</p>
+    <div class="art"><img src="cards_v2/v2_10_命运之轮.jpg" alt="命运之轮" loading="lazy"></div>
+    <svg class="finial" viewBox="0 0 60 20"><use href="#finial"/></svg>
+    <div class="nameband"><svg class="band" viewBox="0 0 200 40" preserveAspectRatio="none"><use href="#plate"/></svg>
+      <div class="nametext"><h3>命运之轮</h3><p class="en">Wheel of Fortune</p></div>
     </div>
   </div>
   <div class="meta">
@@ -212,95 +316,123 @@
 </article>
 <article class="card">
   <div class="frame">
-    <img src="cards/v1_11_正义.jpg" alt="正义" loading="lazy">
+    <svg class="corner tl" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner tr" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner bl" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner br" viewBox="0 0 48 48"><use href="#corner"/></svg>
     <div class="plate"><span class="num">XI</span></div>
-    <div class="caption">
-      <h3>正义</h3>
-      <p class="en">Justice</p>
+    <div class="art"><img src="cards_v2/v2_11_正义.jpg" alt="正义" loading="lazy"></div>
+    <svg class="finial" viewBox="0 0 60 20"><use href="#finial"/></svg>
+    <div class="nameband"><svg class="band" viewBox="0 0 200 40" preserveAspectRatio="none"><use href="#plate"/></svg>
+      <div class="nametext"><h3>正义</h3><p class="en">Justice</p></div>
     </div>
   </div>
   <div class="meta">
-    <p class="who">韦昭 · 34 · 法官</p>
-    <p class="quote">「天平是歪的，她正伸手去校」</p>
+    <p class="who">卫昭 · 34 · 法官</p>
+    <p class="quote">「天平不偏向谁，包括她自己」</p>
   </div>
 </article>
 <article class="card">
   <div class="frame">
-    <img src="cards/v1_12_倒吊人.jpg" alt="倒吊人" loading="lazy">
+    <svg class="corner tl" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner tr" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner bl" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner br" viewBox="0 0 48 48"><use href="#corner"/></svg>
     <div class="plate"><span class="num">XII</span></div>
-    <div class="caption">
-      <h3>倒吊人</h3>
-      <p class="en">The Hanged Man</p>
+    <div class="art"><img src="cards_v2/v2_12_倒吊人.jpg" alt="倒吊人" loading="lazy"></div>
+    <svg class="finial" viewBox="0 0 60 20"><use href="#finial"/></svg>
+    <div class="nameband"><svg class="band" viewBox="0 0 200 40" preserveAspectRatio="none"><use href="#plate"/></svg>
+      <div class="nametext"><h3>倒吊人</h3><p class="en">The Hanged Man</p></div>
     </div>
   </div>
   <div class="meta">
-    <p class="who">柳青 · 27 · 空中绸吊演员</p>
-    <p class="quote">「倒过来，这样看得更清楚」</p>
+    <p class="who">柳青 · 27 · 高空绸吊演员</p>
+    <p class="quote">「倒过来看，世界是另一个样子」</p>
   </div>
 </article>
 <article class="card">
   <div class="frame">
-    <img src="cards/v1_13_死神.jpg" alt="死神" loading="lazy">
+    <svg class="corner tl" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner tr" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner bl" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner br" viewBox="0 0 48 48"><use href="#corner"/></svg>
     <div class="plate"><span class="num">XIII</span></div>
-    <div class="caption">
-      <h3>死神</h3>
-      <p class="en">Death</p>
+    <div class="art"><img src="cards_v2/v2_13_死神.jpg" alt="死神" loading="lazy"></div>
+    <svg class="finial" viewBox="0 0 60 20"><use href="#finial"/></svg>
+    <div class="nameband"><svg class="band" viewBox="0 0 200 40" preserveAspectRatio="none"><use href="#plate"/></svg>
+      <div class="nametext"><h3>死神</h3><p class="en">Death</p></div>
     </div>
   </div>
   <div class="meta">
-    <p class="who">江雪 · 33 · 临终关怀护士</p>
-    <p class="quote">「她送走过三百二十七个人」</p>
+    <p class="who">江雪 · 33 · 安宁疗护护士</p>
+    <p class="quote">「她送走过很多人，一个都没忘」</p>
   </div>
 </article>
 <article class="card">
   <div class="frame">
-    <img src="cards/v1_14_节制.jpg" alt="节制" loading="lazy">
+    <svg class="corner tl" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner tr" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner bl" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner br" viewBox="0 0 48 48"><use href="#corner"/></svg>
     <div class="plate"><span class="num">XIV</span></div>
-    <div class="caption">
-      <h3>节制</h3>
-      <p class="en">Temperance</p>
+    <div class="art"><img src="cards_v2/v2_14_节制.jpg" alt="节制" loading="lazy"></div>
+    <svg class="finial" viewBox="0 0 60 20"><use href="#finial"/></svg>
+    <div class="nameband"><svg class="band" viewBox="0 0 200 40" preserveAspectRatio="none"><use href="#plate"/></svg>
+      <div class="nametext"><h3>节制</h3><p class="en">Temperance</p></div>
     </div>
   </div>
   <div class="meta">
-    <p class="who">温言 · 29 · 酒吧主理人</p>
-    <p class="quote">「她量的不是酒，是分寸」</p>
+    <p class="who">温言 · 29 · 调酒师</p>
+    <p class="quote">「满杯会洒，她只倒到该停的地方」</p>
   </div>
 </article>
 <article class="card">
   <div class="frame">
-    <img src="cards/v1_15_恶魔.jpg" alt="恶魔" loading="lazy">
+    <svg class="corner tl" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner tr" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner bl" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner br" viewBox="0 0 48 48"><use href="#corner"/></svg>
     <div class="plate"><span class="num">XV</span></div>
-    <div class="caption">
-      <h3>恶魔</h3>
-      <p class="en">The Devil</p>
+    <div class="art"><img src="cards_v2/v2_15_恶魔.jpg" alt="恶魔" loading="lazy"></div>
+    <svg class="finial" viewBox="0 0 60 20"><use href="#finial"/></svg>
+    <div class="nameband"><svg class="band" viewBox="0 0 200 40" preserveAspectRatio="none"><use href="#plate"/></svg>
+      <div class="nametext"><h3>恶魔</h3><p class="en">The Devil</p></div>
     </div>
   </div>
   <div class="meta">
-    <p class="who">玖 · 25 · 摇滚乐队主唱</p>
-    <p class="quote">「她喊的是台下人不敢承认的」</p>
+    <p class="who">玖 · 25 · 地下歌手</p>
+    <p class="quote">「链子松的，是我自己没走」</p>
   </div>
 </article>
 <article class="card">
   <div class="frame">
-    <img src="cards/v1_16_塔.jpg" alt="塔" loading="lazy">
+    <svg class="corner tl" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner tr" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner bl" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner br" viewBox="0 0 48 48"><use href="#corner"/></svg>
     <div class="plate"><span class="num">XVI</span></div>
-    <div class="caption">
-      <h3>塔</h3>
-      <p class="en">The Tower</p>
+    <div class="art"><img src="cards_v2/v2_16_塔.jpg" alt="塔" loading="lazy"></div>
+    <svg class="finial" viewBox="0 0 60 20"><use href="#finial"/></svg>
+    <div class="nameband"><svg class="band" viewBox="0 0 200 40" preserveAspectRatio="none"><use href="#plate"/></svg>
+      <div class="nametext"><h3>塔</h3><p class="en">The Tower</p></div>
     </div>
   </div>
   <div class="meta">
-    <p class="who">左翎 · 23 · 爆破工程师</p>
-    <p class="quote">「让该倒的倒得干净」</p>
+    <p class="who">左凌 · 23 · 爆破工程师</p>
+    <p class="quote">「塌掉的那部分，本来也不承重」</p>
   </div>
 </article>
 <article class="card">
   <div class="frame">
-    <img src="cards/v1_17_星星.jpg" alt="星星" loading="lazy">
+    <svg class="corner tl" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner tr" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner bl" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner br" viewBox="0 0 48 48"><use href="#corner"/></svg>
     <div class="plate"><span class="num">XVII</span></div>
-    <div class="caption">
-      <h3>星星</h3>
-      <p class="en">The Star</p>
+    <div class="art"><img src="cards_v2/v2_17_星星.jpg" alt="星星" loading="lazy"></div>
+    <svg class="finial" viewBox="0 0 60 20"><use href="#finial"/></svg>
+    <div class="nameband"><svg class="band" viewBox="0 0 200 40" preserveAspectRatio="none"><use href="#plate"/></svg>
+      <div class="nametext"><h3>星星</h3><p class="en">The Star</p></div>
     </div>
   </div>
   <div class="meta">
@@ -310,11 +442,15 @@
 </article>
 <article class="card">
   <div class="frame">
-    <img src="cards/v1_18_月亮.jpg" alt="月亮" loading="lazy">
+    <svg class="corner tl" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner tr" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner bl" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner br" viewBox="0 0 48 48"><use href="#corner"/></svg>
     <div class="plate"><span class="num">XVIII</span></div>
-    <div class="caption">
-      <h3>月亮</h3>
-      <p class="en">The Moon</p>
+    <div class="art"><img src="cards_v2/v2_18_月亮.jpg" alt="月亮" loading="lazy"></div>
+    <svg class="finial" viewBox="0 0 60 20"><use href="#finial"/></svg>
+    <div class="nameband"><svg class="band" viewBox="0 0 200 40" preserveAspectRatio="none"><use href="#plate"/></svg>
+      <div class="nametext"><h3>月亮</h3><p class="en">The Moon</p></div>
     </div>
   </div>
   <div class="meta">
@@ -324,11 +460,15 @@
 </article>
 <article class="card">
   <div class="frame">
-    <img src="cards/v1_19_太阳.jpg" alt="太阳" loading="lazy">
+    <svg class="corner tl" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner tr" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner bl" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner br" viewBox="0 0 48 48"><use href="#corner"/></svg>
     <div class="plate"><span class="num">XIX</span></div>
-    <div class="caption">
-      <h3>太阳</h3>
-      <p class="en">The Sun</p>
+    <div class="art"><img src="cards_v2/v2_19_太阳.jpg" alt="太阳" loading="lazy"></div>
+    <svg class="finial" viewBox="0 0 60 20"><use href="#finial"/></svg>
+    <div class="nameband"><svg class="band" viewBox="0 0 200 40" preserveAspectRatio="none"><use href="#plate"/></svg>
+      <div class="nametext"><h3>太阳</h3><p class="en">The Sun</p></div>
     </div>
   </div>
   <div class="meta">
@@ -338,11 +478,15 @@
 </article>
 <article class="card">
   <div class="frame">
-    <img src="cards/v1_20_审判.jpg" alt="审判" loading="lazy">
+    <svg class="corner tl" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner tr" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner bl" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner br" viewBox="0 0 48 48"><use href="#corner"/></svg>
     <div class="plate"><span class="num">XX</span></div>
-    <div class="caption">
-      <h3>审判</h3>
-      <p class="en">Judgement</p>
+    <div class="art"><img src="cards_v2/v2_20_审判.jpg" alt="审判" loading="lazy"></div>
+    <svg class="finial" viewBox="0 0 60 20"><use href="#finial"/></svg>
+    <div class="nameband"><svg class="band" viewBox="0 0 200 40" preserveAspectRatio="none"><use href="#plate"/></svg>
+      <div class="nametext"><h3>审判</h3><p class="en">Judgement</p></div>
     </div>
   </div>
   <div class="meta">
@@ -352,11 +496,15 @@
 </article>
 <article class="card">
   <div class="frame">
-    <img src="cards/v1_21_世界.jpg" alt="世界" loading="lazy">
+    <svg class="corner tl" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner tr" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner bl" viewBox="0 0 48 48"><use href="#corner"/></svg>
+    <svg class="corner br" viewBox="0 0 48 48"><use href="#corner"/></svg>
     <div class="plate"><span class="num">XXI</span></div>
-    <div class="caption">
-      <h3>世界</h3>
-      <p class="en">The World</p>
+    <div class="art"><img src="cards_v2/v2_21_世界.jpg" alt="世界" loading="lazy"></div>
+    <svg class="finial" viewBox="0 0 60 20"><use href="#finial"/></svg>
+    <div class="nameband"><svg class="band" viewBox="0 0 200 40" preserveAspectRatio="none"><use href="#plate"/></svg>
+      <div class="nametext"><h3>世界</h3><p class="en">The World</p></div>
     </div>
   </div>
   <div class="meta">
