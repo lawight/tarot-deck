@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>牌知道 · 22 张大阿卡纳</title>
+<style>
+  :root { --gold:#c9a227; --ink:#2b2620; --paper:#f5efe2; --line:#d8cbb0; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:#1c1a17; color:#e8e2d5;
+         font-family:"Songti SC","Noto Serif SC",serif; line-height:1.7; }
+  header { max-width:1200px; margin:0 auto; padding:56px 24px 8px; }
+  h1 { font-size:30px; margin:0 0 8px; letter-spacing:.14em; color:var(--gold); font-weight:500; }
+  .sub { color:#9c9284; font-size:14px; margin:0 0 6px; }
+  .intro { max-width:760px; margin:26px 0 0; color:#c9c1b1; font-size:15px; }
+  .intro strong { color:var(--gold); }
+  .stat { margin-top:18px; font-size:13px; color:#8b8272; }
+  .deck { max-width:1200px; margin:0 auto; padding:32px 24px 80px;
+           display:grid; grid-template-columns:repeat(auto-fill,minmax(238px,1fr)); gap:34px 26px; }
+  .card { display:flex; flex-direction:column; }
+  .frame { position:relative; background:var(--paper); border-radius:6px; overflow:hidden;
+            box-shadow:0 12px 34px rgba(0,0,0,.55); aspect-ratio:768/1344; }
+  .frame img { width:100%; height:100%; object-fit:cover; display:block; }
+  .pending { width:100%; height:100%; display:flex; flex-direction:column; align-items:center;
+              justify-content:center; color:#a99a7c; font-size:14px;
+              background:repeating-linear-gradient(45deg,#efe7d6,#efe7d6 12px,#e7ddc8 12px,#e7ddc8 24px); }
+  .pending span { font-size:11px; letter-spacing:.2em; }
+  .plate { position:absolute; top:10px; left:50%; transform:translateX(-50%);
+            background:rgba(43,38,32,.82); color:var(--gold);
+            border:1px solid var(--gold); border-radius:999px;
+            min-width:44px; padding:3px 12px; text-align:center;
+            font-size:13px; letter-spacing:.16em; }
+  .caption { position:absolute; left:0; right:0; bottom:0; padding:34px 14px 14px;
+              background:linear-gradient(transparent,rgba(28,26,23,.92));
+              text-align:center; }
+  .caption h3 { margin:0; font-size:19px; letter-spacing:.1em; color:#f3ead6; font-weight:500; }
+  .caption .en { margin:2px 0 0; font-size:11px; letter-spacing:.18em;
+                  color:#b9a97f; text-transform:uppercase; }
+  .meta { padding:12px 4px 0; }
+  .who { margin:0; font-size:12.5px; color:#9c9284; }
+  .quote { margin:6px 0 0; font-size:13.5px; color:#cfc6b4; }
+  footer { max-width:1200px; margin:0 auto; padding:0 24px 70px; color:#7d7566; font-size:13px; }
+  footer .line { border-top:1px solid #332e27; padding-top:20px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>牌 知 道</h1>
+  <p class="sub">22 张大阿卡纳 · 女子群像 · 原创</p>
+  <p class="sub"><a href="story.html" style="color:#c9a227">阅读故事 →</a></p>
+  <p class="intro">
+    <strong>这副牌不画神。它画的是牌见过的人。</strong><br>
+    一百年来，凡是被这副牌「记住」的人，都活在牌里。<br>
+    翻开一张，就是让一个人重新活一次。
+  </p>
+  <p class="stat">牌序 0 – XXI ｜ 角色年龄 18–38 ｜ 已出图 22/22</p>
+</header>
+<main class="deck">
+<article class="card">
+  <div class="frame">
+    <img src="cards/v1_00_愚者.jpg" alt="愚者" loading="lazy">
+    <div class="plate"><span class="num">0</span></div>
+    <div class="caption">
+      <h3>愚者</h3>
+      <p class="en">The Fool</p>
+    </div>
+  </div>
+  <div class="meta">
+    <p class="who">阿笙 · 18 · 背包客</p>
+    <p class="quote">「什么都不怕，因为她什么都还没失去」</p>
+  </div>
+</article>
+<article class="card">
+  <div class="frame">
+    <img src="cards/v1_01_魔术师.jpg" alt="魔术师" loading="lazy">
+    <div class="plate"><span class="num">I</span></div>
+    <div class="caption">
+      <h3>魔术师</h3>
+      <p class="en">The Magician</p>
+    </div>
+  </div>
+  <div class="meta">
+    <p class="who">江晚 · 22 · 街头魔术师</p>
+    <p class="quote">「魔术不是让你猜不到，是让你不想猜」</p>
+  </div>
+</article>
+<article class="card">
+  <div class="frame">
+    <img src="cards/v1_02_女祭司.jpg" alt="女祭司" loading="lazy">
+    <div class="plate"><span class="num">II</span></div>
+    <div class="caption">
+      <h3>女祭司</h3>
+      <p class="en">The High Priestess</p>
+    </div>
+  </div>
+  <div class="meta">
+    <p class="who">苏闵 · 26 · 古籍研究员</p>
+    <p class="quote">「一本书最诚实的地方，是它的边」</p>
+  </div>
+</article>
+<article class="card">
+  <div class="frame">
+    <img src="cards/v1_03_女皇.jpg" alt="女皇" loading="lazy">
+    <div class="plate"><span class="num">III</span></div>
+    <div class="caption">
+      <h3>女皇</h3>
+      <p class="en">The Empress</p>
+    </div>
+  </div>
+  <div class="meta">
+    <p class="who">陈荔 · 32 · 花店老板</p>
+    <p class="quote">「我要是快了，花就不好看了」</p>
+  </div>
+</article>
+<article class="card">
+  <div class="frame">
+    <img src="cards/v1_04_皇帝.jpg" alt="皇帝" loading="lazy">
+    <div class="plate"><span class="num">IV</span></div>
+    <div class="caption">
+      <h3>皇帝</h3>
+      <p class="en">The Emperor</p>
+    </div>
+  </div>
+  <div class="meta">
+    <p class="who">郑峥 · 38 · 建筑事务所主理人</p>
+    <p class="quote">「她建的东西会比她活得久」</p>
+  </div>
+</article>
+<article class="card">
+  <div class="frame">
+    <img src="cards/v1_05_教皇.jpg" alt="教皇" loading="lazy">
+    <div class="plate"><span class="num">V</span></div>
+    <div class="caption">
+      <h3>教皇</h3>
+      <p class="en">The Hierophant</p>
+    </div>
+  </div>
+  <div class="meta">
+    <p class="who">方棠 · 35 · 高中语文老师</p>
+    <p class="quote">「黑板上那个字，最后一笔还没收」</p>
+  </div>
+</article>
+<article class="card">
+  <div class="frame">
+    <img src="cards/v1_06_恋人.jpg" alt="恋人" loading="lazy">
+    <div class="plate"><span class="num">VI</span></div>
+    <div class="caption">
+      <h3>恋人</h3>
+      <p class="en">The Lovers</p>
+    </div>
+  </div>
+  <div class="meta">
+    <p class="who">祝宁 · 24 · 婚庆策划</p>
+    <p class="quote">「这场是第一百零二场，给自己留的」</p>
+  </div>
+</article>
+<article class="card">
+  <div class="frame">
+    <img src="cards/v1_07_战车.jpg" alt="战车" loading="lazy">
+    <div class="plate"><span class="num">VII</span></div>
+    <div class="caption">
+      <h3>战车</h3>
+      <p class="en">The Chariot</p>
+    </div>
+  </div>
+  <div class="meta">
+    <p class="who">南宫遥 · 21 · 拉力赛车手</p>
+    <p class="quote">「她的表比标准时间快两分十七秒」</p>
+  </div>
+</article>
+<article class="card">
+  <div class="frame">
+    <img src="cards/v1_08_力量.jpg" alt="力量" loading="lazy">
+    <div class="plate"><span class="num">VIII</span></div>
+    <div class="caption">
+      <h3>力量</h3>
+      <p class="en">Strength</p>
+    </div>
+  </div>
+  <div class="meta">
+    <p class="who">白麓 · 28 · 野生动物兽医</p>
+    <p class="quote">「她的手是松的——从没握紧过」</p>
+  </div>
+</article>
+<article class="card">
+  <div class="frame">
+    <img src="cards/v1_09_隐者.jpg" alt="隐者" loading="lazy">
+    <div class="plate"><span class="num">IX</span></div>
+    <div class="caption">
+      <h3>隐者</h3>
+      <p class="en">The Hermit</p>
+    </div>
+  </div>
+  <div class="meta">
+    <p class="who">陶真 · 37 · 陶艺家</p>
+    <p class="quote">「碗还是软的，什么都还可能」</p>
+  </div>
+</article>
+<article class="card">
+  <div class="frame">
+    <img src="cards/v1_10_命运之轮.jpg" alt="命运之轮" loading="lazy">
+    <div class="plate"><span class="num">X</span></div>
+    <div class="caption">
+      <h3>命运之轮</h3>
+      <p class="en">Wheel of Fortune</p>
+    </div>
+  </div>
+  <div class="meta">
+    <p class="who">阮玫 · 30 · 赌场荷官</p>
+    <p class="quote">「我见过运气长什么样，它不认识你」</p>
+  </div>
+</article>
+<article class="card">
+  <div class="frame">
+    <img src="cards/v1_11_正义.jpg" alt="正义" loading="lazy">
+    <div class="plate"><span class="num">XI</span></div>
+    <div class="caption">
+      <h3>正义</h3>
+      <p class="en">Justice</p>
+    </div>
+  </div>
+  <div class="meta">
+    <p class="who">韦昭 · 34 · 法官</p>
+    <p class="quote">「天平是歪的，她正伸手去校」</p>
+  </div>
+</article>
+<article class="card">
+  <div class="frame">
+    <img src="cards/v1_12_倒吊人.jpg" alt="倒吊人" loading="lazy">
+    <div class="plate"><span class="num">XII</span></div>
+    <div class="caption">
+      <h3>倒吊人</h3>
+      <p class="en">The Hanged Man</p>
+    </div>
+  </div>
+  <div class="meta">
+    <p class="who">柳青 · 27 · 空中绸吊演员</p>
+    <p class="quote">「倒过来，这样看得更清楚」</p>
+  </div>
+</article>
+<article class="card">
+  <div class="frame">
+    <img src="cards/v1_13_死神.jpg" alt="死神" loading="lazy">
+    <div class="plate"><span class="num">XIII</span></div>
+    <div class="caption">
+      <h3>死神</h3>
+      <p class="en">Death</p>
+    </div>
+  </div>
+  <div class="meta">
+    <p class="who">江雪 · 33 · 临终关怀护士</p>
+    <p class="quote">「她送走过三百二十七个人」</p>
+  </div>
+</article>
+<article class="card">
+  <div class="frame">
+    <img src="cards/v1_14_节制.jpg" alt="节制" loading="lazy">
+    <div class="plate"><span class="num">XIV</span></div>
+    <div class="caption">
+      <h3>节制</h3>
+      <p class="en">Temperance</p>
+    </div>
+  </div>
+  <div class="meta">
+    <p class="who">温言 · 29 · 酒吧主理人</p>
+    <p class="quote">「她量的不是酒，是分寸」</p>
+  </div>
+</article>
+<article class="card">
+  <div class="frame">
+    <img src="cards/v1_15_恶魔.jpg" alt="恶魔" loading="lazy">
+    <div class="plate"><span class="num">XV</span></div>
+    <div class="caption">
+      <h3>恶魔</h3>
+      <p class="en">The Devil</p>
+    </div>
+  </div>
+  <div class="meta">
+    <p class="who">玖 · 25 · 摇滚乐队主唱</p>
+    <p class="quote">「她喊的是台下人不敢承认的」</p>
+  </div>
+</article>
+<article class="card">
+  <div class="frame">
+    <img src="cards/v1_16_塔.jpg" alt="塔" loading="lazy">
+    <div class="plate"><span class="num">XVI</span></div>
+    <div class="caption">
+      <h3>塔</h3>
+      <p class="en">The Tower</p>
+    </div>
+  </div>
+  <div class="meta">
+    <p class="who">左翎 · 23 · 爆破工程师</p>
+    <p class="quote">「让该倒的倒得干净」</p>
+  </div>
+</article>
+<article class="card">
+  <div class="frame">
+    <img src="cards/v1_17_星星.jpg" alt="星星" loading="lazy">
+    <div class="plate"><span class="num">XVII</span></div>
+    <div class="caption">
+      <h3>星星</h3>
+      <p class="en">The Star</p>
+    </div>
+  </div>
+  <div class="meta">
+    <p class="who">星野澪 · 19 · 天文系学生</p>
+    <p class="quote">「她数过的星星比认识的人多」</p>
+  </div>
+</article>
+<article class="card">
+  <div class="frame">
+    <img src="cards/v1_18_月亮.jpg" alt="月亮" loading="lazy">
+    <div class="plate"><span class="num">XVIII</span></div>
+    <div class="caption">
+      <h3>月亮</h3>
+      <p class="en">The Moon</p>
+    </div>
+  </div>
+  <div class="meta">
+    <p class="who">沈砚 · 31 · 小说家</p>
+    <p class="quote">「她写的都是醒着不敢想的」</p>
+  </div>
+</article>
+<article class="card">
+  <div class="frame">
+    <img src="cards/v1_19_太阳.jpg" alt="太阳" loading="lazy">
+    <div class="plate"><span class="num">XIX</span></div>
+    <div class="caption">
+      <h3>太阳</h3>
+      <p class="en">The Sun</p>
+    </div>
+  </div>
+  <div class="meta">
+    <p class="who">夏晴 · 20 · 游泳运动员</p>
+    <p class="quote">「水还没干，太阳已经出来了」</p>
+  </div>
+</article>
+<article class="card">
+  <div class="frame">
+    <img src="cards/v1_20_审判.jpg" alt="审判" loading="lazy">
+    <div class="plate"><span class="num">XX</span></div>
+    <div class="caption">
+      <h3>审判</h3>
+      <p class="en">Judgement</p>
+    </div>
+  </div>
+  <div class="meta">
+    <p class="who">商叙 · 36 · 法医人类学家</p>
+    <p class="quote">「她让没说完的人把话说完」</p>
+  </div>
+</article>
+<article class="card">
+  <div class="frame">
+    <img src="cards/v1_21_世界.jpg" alt="世界" loading="lazy">
+    <div class="plate"><span class="num">XXI</span></div>
+    <div class="caption">
+      <h3>世界</h3>
+      <p class="en">The World</p>
+    </div>
+  </div>
+  <div class="meta">
+    <p class="who">—</p>
+    <p class="quote">「拿牌的人，就是第二十二张」</p>
+  </div>
+</article>
+</main>
+<footer>
+  <div class="line">
+    第二十二张不在牌里。卡槽底部有一行淡墨：<br>
+    「『世界』不在牌里。因为拿牌的人，就是第二十二张。」
+  </div>
+</footer>
+</body>
+</html>
